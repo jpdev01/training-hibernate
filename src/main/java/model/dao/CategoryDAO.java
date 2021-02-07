@@ -7,10 +7,9 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 public class CategoryDAO {
-    private EntityManager em = new ConnectionFactory().createConnection();
 
     public Category save(Category c){
-
+        EntityManager em = new ConnectionFactory().createConnection();
         try {
 
             em.getTransaction().begin();
@@ -41,7 +40,7 @@ public class CategoryDAO {
     }
 
     public Category findById(Integer id){
-
+        EntityManager em = new ConnectionFactory().createConnection();
         Category category = null;
 
         try{
@@ -58,6 +57,7 @@ public class CategoryDAO {
     }
 
     public List<Category> findAll(){
+        EntityManager em = new ConnectionFactory().createConnection();
         // busca por query
         List<Category> categories = null;
 
@@ -79,7 +79,7 @@ public class CategoryDAO {
     }
 
     public void remove(Integer id){
-
+        EntityManager em = new ConnectionFactory().createConnection();
         try {
 
             Category c = findById(id);
