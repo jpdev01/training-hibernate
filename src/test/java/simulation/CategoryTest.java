@@ -1,10 +1,8 @@
-package categories;
+package simulation;
 
-import connection.ConnectionFactory;
 import model.bean.Category;
 import model.dao.CategoryDAO;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 

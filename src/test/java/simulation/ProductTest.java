@@ -1,4 +1,4 @@
-package categories;
+package simulation;
 
 import model.bean.Category;
 import model.bean.Product;

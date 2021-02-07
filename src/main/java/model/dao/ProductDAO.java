@@ -62,4 +62,23 @@ public class ProductDAO {
 
         return products;
     }
+
+    public void remove(Integer id){
+        EntityManager em = ConnectionFactory.getConnection();
+
+        try {
+            Product p = findById(id);
+            if (p != null) {
+                em.getTransaction().begin();
+                em.remove(p);
+                em.getTransaction().commit();
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
 }
