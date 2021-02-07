@@ -8,6 +8,14 @@ public class ConnectionFactory {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("training-hibernate");
 
+    public ConnectionFactory(){
+
+    }
+
+    public EntityManagerFactory getInstance(){
+        return emf;
+    }
+
     public static EntityManager getConnection(){
         return emf.createEntityManager();
     }
