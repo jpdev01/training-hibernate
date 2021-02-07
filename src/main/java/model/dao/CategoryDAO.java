@@ -66,12 +66,12 @@ public class CategoryDAO {
 
         try {
 
-            // JDBC: SELECT * FROM CATEGORIA
-            categories = em.createQuery("from category").getResultList();
+            // JDBC: SELECT * FROM CATEGORY
+            categories = em.createQuery("from Category").getResultList();
 
         } catch (Exception e) {
 
-            System.out.println(e);
+            System.err.println(e);
 
         } finally {
 

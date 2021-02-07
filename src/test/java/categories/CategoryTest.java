@@ -15,6 +15,7 @@ public class CategoryTest {
         updateTest();
         String toString = categoryToString(findTest(01));
         System.out.println(toString);
+        System.out.println(categoriesToString(findAllTest()));
     }
 
     public static void saveTest(){
@@ -54,6 +55,26 @@ public class CategoryTest {
             return text;
         }
         return null;
+    }
+
+    public static String categoriesToString(List<Category> list){
+        if (list != null && !list.isEmpty()){
+            String text = "";
+            for (Category c : list){
+                text += "\nCategoria\n";
+                text += "\nId:" + c.getId();
+                text += "\nNome: " + c.getName();
+                text += "\nDescrição: " + c.getDescricao();
+                return text;
+            }
+        }
+        return null;
+    }
+
+    public static List<Category> findAllTest(){
+        CategoryDAO dao = new CategoryDAO();
+
+        return dao.findAll();
     }
 
 }
