@@ -21,12 +21,6 @@ public class CategoryTest {
         categories.add(c);
         categories.add(c1);
 
-        for (Category cat : categories){
-           if (cat.getId() != null){
-               return;
-           }
-        }
-
         CategoryDAO ctgDAO = new CategoryDAO();
 
         for (Category cat : categories ){
