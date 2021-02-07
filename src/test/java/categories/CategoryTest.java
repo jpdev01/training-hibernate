@@ -16,6 +16,7 @@ public class CategoryTest {
         String toString = categoryToString(findTest(01));
         System.out.println(toString);
         System.out.println(categoriesToString(findAllTest()));
+        removeTest(02);
     }
 
     public static void saveTest(){
@@ -75,6 +76,11 @@ public class CategoryTest {
         CategoryDAO dao = new CategoryDAO();
 
         return dao.findAll();
+    }
+
+    public static void removeTest(Integer id){
+        CategoryDAO dao = new CategoryDAO();
+        dao.remove(id);
     }
 
 }

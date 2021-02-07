@@ -3,6 +3,7 @@
 
     <persistence-unit name="training-hibernate" transaction-type="RESOURCE_LOCAL">
         <class>model.bean.Category</class>
+        <class>model.bean.Product</class>
         <properties>
             <!-- mysql -->
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost/traininghibernate"/>
