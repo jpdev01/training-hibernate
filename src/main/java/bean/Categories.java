@@ -14,8 +14,7 @@ public class Categories {
     private String name;
     private String descricao;
 
-    public Categories(Integer id, String name, String descricao) {
-        this.id = id;
+    public Categories(String name, String descricao) {
         this.name = name;
         this.descricao = descricao;
     }
