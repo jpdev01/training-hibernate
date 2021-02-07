@@ -12,6 +12,9 @@ public class CategoryTest {
 
     public static void main(String[] args) {
         saveTest();
+        updateTest();
+        String toString = categoryToString(findTest(01));
+        System.out.println(toString);
     }
 
     public static void saveTest(){
@@ -27,4 +30,30 @@ public class CategoryTest {
             ctgDAO.save(cat);
         }
     }
+
+    public static void updateTest(){
+        Category c = new Category(01, "Comidas", "Comidas para janta");
+
+        CategoryDAO ctgDAO = new CategoryDAO();
+        ctgDAO.save(c);
+    }
+
+    public static Category findTest(Integer id){
+        CategoryDAO dao = new CategoryDAO();
+
+        return dao.findById(id);
+    }
+
+    public static String categoryToString(Category c){
+        if (c != null){
+            String text = "";
+            text += "\nCategoria\n";
+            text += "\nId:" + c.getId();
+            text += "\nNome: " + c.getName();
+            text += "\nDescrição: " + c.getDescricao();
+            return text;
+        }
+        return null;
+    }
+
 }
