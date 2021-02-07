@@ -1,13 +1,13 @@
 package model.dao;
 
 import connection.ConnectionFactory;
-import model.bean.Categorie;
+import model.bean.Category;
 
 import javax.persistence.EntityManager;
 
-public class CategorieDAO {
+public class CategoryDAO {
 
-    public Categorie save(Categorie c){
+    public Category save(Category c){
 
         EntityManager em = ConnectionFactory.getConnection();
 
@@ -18,9 +18,12 @@ public class CategorieDAO {
             em.getTransaction().commit();
 
         } catch (Exception e) {
-
+            em.getTransaction().rollback();
+            // desfaz tudo
         } finally {
-
+            em.close();
         }
+
+        return c;
     }
 }
