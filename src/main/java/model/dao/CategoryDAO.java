@@ -14,7 +14,15 @@ public class CategoryDAO {
         try {
 
             em.getTransaction().begin();
-            em.persist(c);
+
+            if (c.getId() == null){
+                // nao tem ID: significa que é um objeto novo, insert.
+                em.persist(c);
+            }
+            else {
+                // se tiver id, significa que já foi persistido, update
+                em.merge(c);
+            }
             em.getTransaction().commit();
 
         } catch (Exception e) {
