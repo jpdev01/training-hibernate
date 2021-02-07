@@ -17,6 +17,7 @@ public class ProductTest {
         saveTest();
         updateTest();
         System.out.println(toString(findTest()));
+        System.out.println(allToString(findAllTest()));
     }
 
     public static void saveTest(){
@@ -40,15 +41,37 @@ public class ProductTest {
         return dao.findById(01);
     }
 
+    public static List<Product> findAllTest(){
+        return dao.findAll();
+    }
+
     public static String toString(Product p){
         String txt = "";
         if (p != null){
-            txt += "\nProduto\n";
+            txt += "------------------";
+            txt += "\nProduto";
             txt += "\nId: " + p.getId();
             txt += "\nNome: " + p.getName();
             txt += "\nDescrição: " + p.getDescription();
-            txt += "\n Categoria: " + p.getCategory();
+            if (p.getCategory() != null){
+                String nameCategory = p.getCategory().getName();
+                if (nameCategory != null) {
+                    txt += "\nCategoria: " + p.getCategory().getName();
+                }
+            }
             txt += "\nValor: " + p.getValue();
+            txt += "\nQuantidade: " + p.getQtde();
+            txt += "\n-------------\n";
+        }
+        return txt;
+    }
+
+    public static String allToString(List<Product> products){
+        String txt = "";
+        if (products != null && !products.isEmpty()){
+            for (Product p : products){
+                txt += toString(p);
+            }
         }
         return txt;
     }

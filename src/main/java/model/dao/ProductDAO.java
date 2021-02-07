@@ -4,6 +4,7 @@ import connection.ConnectionFactory;
 import model.bean.Product;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ProductDAO {
 
@@ -43,5 +44,22 @@ public class ProductDAO {
             em.close();
         }
         return product;
+    }
+
+    public List<Product> findAll(){
+        EntityManager em = ConnectionFactory.getConnection();
+        List<Product> products = null;
+
+        try {
+
+            products = em.createQuery("FROM Product p").getResultList();
+
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+
+        return products;
     }
 }
