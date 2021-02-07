@@ -39,4 +39,22 @@ public class CategoryDAO {
 
         return c;
     }
+
+    public Category findById(Integer id){
+        EntityManager em = ConnectionFactory.getConnection();
+
+        Category category = null;
+
+        try{
+
+            category = em.find(Category.class, id);
+
+        } catch (Exception e){
+            System.out.println("Erro ao fazer busca pelo id\n" + e);
+        } finally {
+            em.close();
+        }
+
+        return category;
+    }
 }
