@@ -18,10 +18,15 @@ public class CategoryDAO {
             em.getTransaction().commit();
 
         } catch (Exception e) {
+
+            System.out.println("Erro de transação! Será feito rollback da transação. \n" + e );
             em.getTransaction().rollback();
             // desfaz tudo
+
         } finally {
+
             em.close();
+
         }
 
         return c;
