@@ -1,6 +1,7 @@
 package categories;
 
-import bean.Categories;
+import connection.ConnectionFactory;
+import model.bean.Categories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,8 +12,7 @@ public class CategoriesTest {
     public static void main(String[] args) {
         Categories c = new Categories("Tecnologias", "Tecnologias para seu conforto");
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("training-hibernate");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = ConnectionFactory.getConnection();
 
         em.getTransaction().begin();
         em.persist(c);
