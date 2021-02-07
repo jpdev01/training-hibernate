@@ -15,6 +15,5 @@ public class CategoryTest {
         CategoryDAO ctgDAO = new CategoryDAO();
         ctgDAO.save(c);
         ctgDAO.save(c1);
-
     }
 }
