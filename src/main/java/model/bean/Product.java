@@ -1,6 +1,8 @@
 package model.bean;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -13,28 +15,28 @@ public class Product {
     private int qtde;
 
     // muitos produtos para uma categoria
-    @ManyToOne
-    private Category category;
+    @ManyToMany
+    private List<Category> categories;
 
     public Product(){
 
     }
 
-    public Product(Integer id, String name, double value, String description, int qtde, Category category) {
+    public Product(Integer id, String name, double value, String description, int qtde, List<Category> categories) {
         this.id = id;
         this.name = name;
         this.value = value;
         this.description = description;
         this.qtde = qtde;
-        this.category = category;
+        this.categories = categories;
     }
 
-    public Product(String name, double value, String description, int qtde, Category category) {
+    public Product(String name, double value, String description, int qtde, List<Category> categories) {
         this.name = name;
         this.value = value;
         this.description = description;
         this.qtde = qtde;
-        this.category = category;
+        this.categories = categories;
     }
 
 
@@ -78,11 +80,20 @@ public class Product {
         this.qtde = qtde;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public void addCategory(Category category)
+    {
+        if (this.categories == null)
+        {
+            this.setCategories(new ArrayList<>());
+        }
+        this.categories.add(category);
     }
 }

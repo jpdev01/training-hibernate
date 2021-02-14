@@ -23,8 +23,10 @@ public class ProductTest {
     public static void saveTest(){
         List<Product> produtos = new ArrayList<Product>();
 
-        Category category = catgDao.findById(01);
-        produtos.add(new Product("Produto 1", 120.00, "Produto de teste", 01, category));
+        List<Category> categories = new ArrayList<>();
+        categories.add(catgDao.findById(01));
+
+        produtos.add(new Product("Produto 1", 120.00, "Produto de teste", 01, categories));
 
         for (Product product : produtos){
             dao.save(product);
@@ -32,8 +34,10 @@ public class ProductTest {
     }
 
     public static void updateTest(){
-        Category category = catgDao.findById(02);
-        Product p = new Product (01, "Produto 1 alterado", 100.00, "Alteração", 01, category);
+        List<Category> categories = new ArrayList<>();
+        categories.add(catgDao.findById(01));
+
+        Product p = new Product (01, "Produto 1 alterado", 100.00, "Alteração", 01, categories);
         dao.save(p);
     }
 
