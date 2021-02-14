@@ -57,12 +57,11 @@ public class ProductTest {
             txt += "\nId: " + p.getId();
             txt += "\nNome: " + p.getName();
             txt += "\nDescrição: " + p.getDescription();
-            if (p.getCategory() != null){
-                String nameCategory = p.getCategory().getName();
-                if (nameCategory != null) {
-                    txt += "\nCategoria: " + p.getCategory().getName();
-                }
+
+            if (p.getCategories() != null){
+                txt += categoriesToString(p.getCategories());
             }
+
             txt += "\nValor: " + p.getValue();
             txt += "\nQuantidade: " + p.getQtde();
             txt += "\n-------------\n";
@@ -76,6 +75,17 @@ public class ProductTest {
             for (Product p : products){
                 txt += toString(p);
             }
+        }
+        return txt;
+    }
+
+    public static String categoriesToString(List<Category> categories)
+    {
+        String txt = "\nCategorias:";
+        for (Category category : categories)
+        {
+            txt = "\nNome: " + category.getName();
+            txt = "\nDescrição: " + category.getDescricao();
         }
         return txt;
     }

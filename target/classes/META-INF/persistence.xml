@@ -13,6 +13,14 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="current_session_context_class" value="thread"/>
+            <!-- para cada requisição, vc deve utilizar uma session do hibernate.
+            session = manipular objetos no banco pelo hibernate.
+
+            -> iniciando a session, utilizo ela durante toda a requisição.
+
+            Quando digo que é por thread, serve para que o servidor atenda mais de um cliente por vez.
+            A session daquela thread será a mesma, e nao se misturará com outras threads.
+            -->
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <!-- -->
